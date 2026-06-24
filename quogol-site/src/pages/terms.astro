@@ -1,16 +1,141 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import Navbar from '@/components/Navbar.astro';
-import Footer from '@/components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const lastUpdated = 'June 2026';
 ---
 
-<BaseLayout title="Terms of Service" description="Quogol Terms of Service">
-  <Navbar />
-  <main class="pt-16">
-    <section class="max-w-3xl mx-auto px-6 py-24">
-      <h1 class="font-display font-bold text-4xl text-qg-text mb-6">Terms of Service</h1>
-      <p class="text-qg-muted">Terms of service content coming soon.</p>
-    </section>
-  </main>
-  <Footer />
+<BaseLayout
+  title="Terms of Service — Quogol"
+  description="Quogol Terms of Service. Fair, readable, human-friendly."
+>
+  <section class="pt-24 pb-12 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="mb-12">
+        <div class="text-xs font-medium text-qg-accent uppercase tracking-widest mb-4">Terms of Service</div>
+        <h1 class="font-display font-black text-5xl text-qg-text leading-tight mb-4">
+          Terms of Service
+        </h1>
+        <p class="text-qg-muted leading-relaxed mb-2">
+          Written like a human, not a lawyer. (Though we'd recommend a lawyer review anything important.)
+        </p>
+        <p class="text-qg-muted text-sm">Last updated: {lastUpdated}</p>
+      </div>
+
+      <!-- Summary box -->
+      <div class="p-6 rounded-xl border border-qg-border bg-qg-surface mb-12">
+        <div class="font-display font-bold text-qg-text mb-3">The Short Version</div>
+        <ul class="space-y-2 text-sm text-qg-muted">
+          <li class="flex items-start gap-2"><span class="text-qg-accent-lt flex-shrink-0">→</span> Use Quogol legally and don't try to break it.</li>
+          <li class="flex items-start gap-2"><span class="text-qg-accent-lt flex-shrink-0">→</span> Quogol Free is free forever. Pro is paid. No surprise charges.</li>
+          <li class="flex items-start gap-2"><span class="text-qg-accent-lt flex-shrink-0">→</span> We can terminate accounts that abuse the service.</li>
+          <li class="flex items-start gap-2"><span class="text-qg-accent-lt flex-shrink-0">→</span> We're not liable for the content of sites you visit.</li>
+          <li class="flex items-start gap-2"><span class="text-qg-accent-lt flex-shrink-0">→</span> Open source components are governed by their respective licenses.</li>
+        </ul>
+      </div>
+
+      <div class="space-y-10 text-qg-muted leading-relaxed">
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">1. Acceptance of Terms</h2>
+          <p>
+            By downloading, installing, or using Quogol (the "Browser"), you agree to these Terms of Service ("Terms"). If you do not agree, do not use Quogol. These Terms apply to the browser software, our website at quogol.com, and any Quogol-operated services including Quogol Pro, Quoogol Mode, and Quoton integrations.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">2. Quogol Free</h2>
+          <p>
+            Quogol Free is provided at no cost and is free forever. We reserve the right to add new features to the Pro tier, but we commit that no existing Free feature will ever be moved behind a paywall. The privacy features — QuogolBlocker, Quoogol Mode, Quoton integration, Quolladium engine, and all themes — are free. Always.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">3. Quogol Pro Subscription</h2>
+          <p>
+            Quogol Pro is a paid subscription billed at $9.99 every two months. Subscriptions automatically renew unless cancelled before the renewal date. You may cancel at any time through your account settings or by contacting <a href="mailto:support@quogol.com" class="text-qg-accent-lt hover:underline">support@quogol.com</a>. Cancellation takes effect at the end of the current billing period. We do not offer refunds for partial periods, except where required by applicable law.
+          </p>
+          <p class="mt-3">
+            If payment fails, your account will be downgraded to Quogol Free. Your data is not deleted upon downgrade — Pro-only data (synced state) is retained for 30 days in case you resubscribe.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">4. Acceptable Use</h2>
+          <p>You agree not to use Quogol to:</p>
+          <ul class="mt-3 space-y-2 pl-4">
+            <li>— Violate any applicable laws or regulations.</li>
+            <li>— Attempt to reverse-engineer, decompile, or tamper with proprietary Quogol components beyond what is permitted by open source licenses.</li>
+            <li>— Abuse or circumvent Quoogol Mode's proxy infrastructure in ways that degrade the service for other users.</li>
+            <li>— Distribute malware, spam, or illegal content through Quogol's sync or sharing features.</li>
+            <li>— Attempt to access Quogol systems or infrastructure without authorization.</li>
+          </ul>
+          <p class="mt-3">
+            Violation of these terms may result in suspension or termination of your Quogol account.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">5. Open Source Components</h2>
+          <p>
+            Quolladium and certain other components of Quogol are open source. Those components are governed by their respective open source licenses (MIT, Apache 2.0, or similar as noted in the repository). Nothing in these Terms restricts rights granted to you by applicable open source licenses. The Quogol browser as a packaged product, including proprietary integrations, is subject to these Terms.
+          </p>
+          <p class="mt-3">
+            The source code for Quolladium and open components is available at <a href="https://github.com/QuogolBrowser/quogol" target="_blank" rel="noopener noreferrer" class="text-qg-accent-lt hover:underline">github.com/QuogolBrowser/quogol</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">6. Third-Party Services</h2>
+          <p>
+            Quogol integrates with third-party services including Proton (Mail, VPN) and Cloudflare (WARP). Your use of those services is subject to their own terms and privacy policies. We are not responsible for the practices or content of third-party services. We earn affiliate revenue when you sign up for Proton or Cloudflare through Quogol — this is disclosed in the product and does not affect the terms of your agreement with those providers.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">7. Intellectual Property</h2>
+          <p>
+            The Quogol name, logo, and brand assets are the intellectual property of the Quogol project. The Quokka mascot and related brand imagery are protected. You may not use the Quogol name or logo to imply endorsement or misrepresent affiliation without prior written permission.
+          </p>
+          <p class="mt-3">
+            User-generated content (bookmarks, notes, workspace content) remains yours. You grant us no license to your content beyond what is necessary to operate the sync service.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">8. Quail Eggs — Community Currency</h2>
+          <p>
+            Quail Eggs are a community contribution currency earned by participating in the Quogol community. Quail Eggs have no monetary value, are not transferable, and may not be exchanged for cash. Quail Egg balances may be reset or adjusted at our discretion, particularly in cases of abuse or manipulation. Quogol Pro subscribers receive Quail Egg bonuses as a perk with no guaranteed value.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">9. Disclaimers and Limitation of Liability</h2>
+          <p>
+            Quogol is provided "as is" and "as available" without warranty of any kind. We do not warrant that the browser will be uninterrupted, error-free, or that any defects will be corrected. We are not responsible for the content of websites you visit through Quogol.
+          </p>
+          <p class="mt-3">
+            To the maximum extent permitted by applicable law, Quogol's total liability for any claim arising from these Terms or your use of the browser shall not exceed the amount you paid for Quogol Pro in the three months preceding the claim, or $10 USD if you are a free user.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">10. Changes to These Terms</h2>
+          <p>
+            We may update these Terms from time to time. If we make material changes, we will notify registered users by email and display a prominent notice in the browser. Continued use of Quogol after the effective date of updated Terms constitutes acceptance. If you do not agree to updated Terms, you may cancel your account and stop using Quogol.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">11. Contact</h2>
+          <p>
+            Questions about these Terms: <a href="mailto:contact@quogol.com" class="text-qg-accent-lt hover:underline">contact@quogol.com</a>
+          </p>
+          <p class="mt-2">
+            Legal / press inquiries: <a href="mailto:press@quogol.com" class="text-qg-accent-lt hover:underline">press@quogol.com</a>
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </section>
 </BaseLayout>

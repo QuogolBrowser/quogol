@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const themes = [
+  {
+    id: 'quogolate',
+    name: 'Quogolate',
+    tagline: 'Deep teal meets warm dark. The default Quogol experience.',
+    description:
+      'Quogolate is the default Quogol theme — a deep teal and forest green palette on warm dark backgrounds. Designed to be easy on your eyes during long sessions while keeping the browser feeling premium and alive. Named after chocolate (quokkas love chocolate, allegedly — not that we\'d give them any).',
+    palette: ['#0d1117', '#161b22', '#01696f', '#019ca3', '#e6edf3'],
+    paletteLabels: ['Background', 'Surface', 'Accent', 'Accent Light', 'Text'],
+    icon: '🍫',
+    features: ['Dark by default', 'Warm-tinted backgrounds', 'Teal accent system', 'Easy on the eyes', 'Easter egg: Quokka holding chocolate'],
+  },
+  {
+    id: 'gray-mode',
+    name: 'Gray Mode',
+    tagline: 'All distraction removed. Pure focus.',
+    description:
+      'Gray Mode strips everything to near-monochrome. No color accents, no visual noise, just you and the content. Perfect for reading, research, or any time you want the browser to disappear. Inspired by the minimalism of writing environments like iA Writer.',
+    palette: ['#111111', '#1a1a1a', '#555555', '#888888', '#eeeeee'],
+    paletteLabels: ['Background', 'Surface', 'Mid-gray', 'Light gray', 'Text'],
+    icon: '🌫️',
+    features: ['Near-monochrome palette', 'Reduced visual weight', 'Perfect reading focus', 'Minimalist chrome', 'Full Reader Mode integration'],
+  },
+  {
+    id: 'reader-mode',
+    name: 'Reader Mode',
+    tagline: 'Article-first rendering. No clutter.',
+    description:
+      'Reader Mode goes beyond a theme — it\'s a rendering mode. Quolladium strips the page to its essential content: text, images that belong to the article, and nothing else. Then it wraps it in a beautiful, typographically-tuned layout. No ads, no related article sidebars, no cookie banners. Just reading.',
+    palette: ['#fafaf8', '#f0ede6', '#3a3530', '#6b6560', '#1a1714'],
+    paletteLabels: ['Page', 'Surface', 'Accent', 'Muted', 'Text'],
+    icon: '📖',
+    features: ['Engine-level content extraction', 'Serif reading font', 'Configurable line width', 'Day & night variants', 'Text size controls'],
+  },
+];
+
+const customizationFeatures = [
+  {
+    title: 'Per-tab themes',
+    desc: 'Apply different themes to different tabs. Dark for browsing, Reader Mode for articles.',
+  },
+  {
+    title: 'Scheduled switching',
+    desc: 'Automatically switch between Quogolate and a lighter theme based on time of day.',
+  },
+  {
+    title: 'Site-specific overrides',
+    desc: 'Pin a theme to specific domains. News sites in Reader Mode, dev docs in Quogolate.',
+  },
+  {
+    title: 'Custom accent colors',
+    desc: 'Swap the teal accent for any color you prefer — Quolladium applies it engine-wide.',
+  },
+  {
+    title: 'Font customization',
+    desc: 'Override the UI font. Bring your own typeface from any source.',
+  },
+  {
+    title: 'Density controls',
+    desc: 'Compact, standard, or spacious — control how much the browser UI occupies.',
+  },
+];
+---
+
+<BaseLayout
+  title="Themes — Quogol Browser"
+  description="Quogolate, Gray Mode, Reader Mode. Vivaldi-level customization with Quokka charm. Your browser, your look."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden pt-28 pb-20 px-6">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-1/2 left-1/3 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-qg-accent opacity-8 blur-3xl"></div>
+    </div>
+    <div class="max-w-5xl mx-auto relative z-10 text-center">
+      <div class="text-xs font-medium text-qg-accent uppercase tracking-widest mb-4">Visual Experience</div>
+      <h1 class="font-display font-black text-5xl md:text-7xl text-qg-text leading-tight mb-6">
+        Make it yours. 🎨
+      </h1>
+      <p class="text-lg text-qg-muted max-w-xl mx-auto leading-relaxed">
+        Vivaldi-level customization with Quokka charm. Three complete themes, per-tab control, and engine-level rendering modes — because your browser should look exactly how you want it.
+      </p>
+    </div>
+  </section>
+
+  <!-- Themes detail sections -->
+  {themes.map((theme, i) => (
+    <section id={theme.id} class={`py-24 px-6 ${i % 2 !== 0 ? 'bg-qg-surface border-y border-qg-border' : ''}`}>
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div class={i % 2 !== 0 ? 'md:order-2' : ''}>
+          <div class="text-4xl mb-4">{theme.icon}</div>
+          <h2 class="font-display font-bold text-4xl text-qg-text mb-3">{theme.name}</h2>
+          <p class="text-qg-accent-lt font-medium mb-4">{theme.tagline}</p>
+          <p class="text-qg-muted leading-relaxed mb-6">{theme.description}</p>
+          <ul class="space-y-2 mb-8">
+            {theme.features.map(f => (
+              <li class="flex items-center gap-3 text-sm text-qg-muted">
+                <span class="w-5 h-5 rounded-full bg-qg-accent/20 flex items-center justify-center text-qg-accent-lt text-xs flex-shrink-0">✓</span>
+                {f}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class={i % 2 !== 0 ? 'md:order-1' : ''}>
+          <!-- Palette swatch -->
+          <div class="p-6 rounded-xl border border-qg-border bg-qg-bg">
+            <div class="text-xs font-medium text-qg-muted uppercase tracking-wider mb-4">Color Palette</div>
+            <div class="flex gap-3 mb-4">
+              {theme.palette.map((color, ci) => (
+                <div class="flex-1">
+                  <div
+                    class="w-full h-12 rounded-lg border border-qg-border mb-2"
+                    style={`background-color: ${color}`}
+                  ></div>
+                  <div class="text-xs text-qg-muted text-center truncate">{theme.paletteLabels[ci]}</div>
+                  <div class="text-xs text-qg-muted/50 text-center font-mono">{color}</div>
+                </div>
+              ))}
+            </div>
+            <div class="mt-4 p-4 rounded-lg border border-qg-border" style={`background-color: ${theme.palette[0]}`}>
+              <div class="text-xs font-medium uppercase tracking-widest mb-2" style={`color: ${theme.palette[4]}`}>
+                {theme.name} Preview
+              </div>
+              <div class="text-sm leading-relaxed" style={`color: ${theme.palette[3]}`}>
+                Everything works. Nothing watches you. The Quokkas observe with warmth.
+              </div>
+              <div class="mt-3 inline-flex px-3 py-1 rounded text-xs text-white" style={`background-color: ${theme.palette[2]}`}>
+                Active
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Advanced Customization -->
+  <section id="customization" class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="font-display font-bold text-3xl text-qg-text mb-4 text-center">
+        Beyond themes.
+      </h2>
+      <p class="text-qg-muted text-center mb-12 max-w-xl mx-auto">
+        Quogol's customization goes deeper than color palettes. Control how the browser behaves visually — site by site, tab by tab.
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {customizationFeatures.map(f => (
+          <div class="p-6 rounded-xl border border-qg-border bg-qg-surface">
+            <h3 class="font-display font-bold text-qg-text mb-2">{f.title}</h3>
+            <p class="text-qg-muted text-sm leading-relaxed">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 bg-qg-surface border-t border-qg-border">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="text-3xl mb-6">🐾</div>
+      <h2 class="font-display font-bold text-3xl text-qg-text mb-4">
+        Your browser. Your look.
+      </h2>
+      <p class="text-qg-muted mb-10">
+        All themes are available in Quogol Free. No Pro tier required. Customization is a right, not a subscription perk.
+      </p>
+      <a
+        href="/download"
+        class="inline-flex px-8 py-3 rounded-lg bg-qg-accent hover:bg-qg-accent-lt text-white font-medium transition-colors"
+      >
+        Download Quogol
+      </a>
+    </div>
+  </section>
+</BaseLayout>

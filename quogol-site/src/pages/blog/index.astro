@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const placeholderPosts = [
+  {
+    slug: '#',
+    title: 'Why We\'re Building Quolladium in Rust',
+    excerpt: 'Chromium is C++. C++ has memory safety problems. Rust doesn\'t. That\'s the short version. Here\'s the long one — and why it matters for your security.',
+    date: 'Coming soon',
+    tag: 'Engineering',
+    tagColor: 'text-blue-400',
+  },
+  {
+    slug: '#',
+    title: 'The Problem with "Privacy-Focused" Chromium Browsers',
+    excerpt: 'Brave, Edge, Arc, Opera — they all have privacy features. They\'re all still Chromium. Let\'s talk about why that\'s a structural problem, not a settings problem.',
+    date: 'Coming soon',
+    tag: 'Privacy',
+    tagColor: 'text-qg-accent-lt',
+  },
+  {
+    slug: '#',
+    title: 'Introducing QuogolBlocker: Engine-Level Blocking',
+    excerpt: 'Browser extensions are too late. By the time an extension blocks a tracker, the request has already been constructed and dispatched. We fixed that.',
+    date: 'Coming soon',
+    tag: 'Product',
+    tagColor: 'text-purple-400',
+  },
+  {
+    slug: '#',
+    title: 'Quoogol Mode: Using Google Without Feeding Google',
+    excerpt: 'Google has the best search index. We\'re not going to pretend otherwise. Quoogol Mode is our solution — real results, zero profile.',
+    date: 'Coming soon',
+    tag: 'Privacy',
+    tagColor: 'text-qg-accent-lt',
+  },
+  {
+    slug: '#',
+    title: 'Meet the Crawler Squad: Quokkle, Quotopus, and Quolophant',
+    excerpt: 'How Quogol\'s search engine works — three specialized crawlers, each with a personality, each solving a different part of the indexing problem.',
+    date: 'Coming soon',
+    tag: 'Engineering',
+    tagColor: 'text-blue-400',
+  },
+  {
+    slug: '#',
+    title: 'Quogol and GrapheneOS: First-Class Support',
+    excerpt: 'GrapheneOS users are our people. Here\'s what first-class support actually means in practice — beyond just "it works".',
+    date: 'Coming soon',
+    tag: 'Community',
+    tagColor: 'text-amber-400',
+  },
+];
+
+const categories = ['All', 'Engineering', 'Privacy', 'Product', 'Community'];
+---
+
+<BaseLayout
+  title="Blog — Quogol"
+  description="Engineering notes, privacy writing, and product updates from the Quogol team."
+>
+  <!-- Hero -->
+  <section class="pt-24 pb-16 px-6">
+    <div class="max-w-5xl mx-auto text-center">
+      <div class="text-xs font-medium text-qg-accent uppercase tracking-widest mb-4">The Quogol Blog</div>
+      <h1 class="font-display font-black text-5xl md:text-6xl text-qg-text leading-tight mb-6">
+        From the team. 🐾
+      </h1>
+      <p class="text-lg text-qg-muted max-w-xl mx-auto leading-relaxed">
+        Engineering notes on Quolladium, privacy writing, and product updates. Written by the people building Quogol.
+      </p>
+    </div>
+  </section>
+
+  <!-- Coming Soon Banner -->
+  <section class="px-6 mb-12">
+    <div class="max-w-5xl mx-auto">
+      <div class="p-6 rounded-xl border border-qg-accent/40 bg-qg-accent/5 text-center">
+        <div class="text-2xl mb-3">📝</div>
+        <h2 class="font-display font-bold text-lg text-qg-text mb-2">Blog launching with the browser</h2>
+        <p class="text-qg-muted text-sm max-w-lg mx-auto">
+          The Quogol blog goes live when the browser does. Sign up on the <a href="/download" class="text-qg-accent-lt hover:underline">download page</a> to be notified — you'll get blog posts in your launch email.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category filter (decorative — static placeholder) -->
+  <section class="px-6 mb-8">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex gap-2 flex-wrap">
+        {categories.map((cat, i) => (
+          <button
+            class={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              i === 0
+                ? 'bg-qg-accent text-white'
+                : 'border border-qg-border text-qg-muted hover:text-qg-text hover:border-qg-accent'
+            }`}
+            aria-label={`Filter by ${cat}`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Post grid -->
+  <section class="py-8 pb-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {placeholderPosts.map(post => (
+          <article class="p-6 rounded-xl border border-qg-border bg-qg-surface flex flex-col gap-4 group">
+            <div class="flex items-center justify-between">
+              <span class={`text-xs font-medium uppercase tracking-wider ${post.tagColor}`}>
+                {post.tag}
+              </span>
+              <span class="text-xs text-qg-muted">{post.date}</span>
+            </div>
+            <h2 class="font-display font-bold text-qg-text leading-snug group-hover:text-qg-accent-lt transition-colors">
+              {post.title}
+            </h2>
+            <p class="text-qg-muted text-sm leading-relaxed flex-1">
+              {post.excerpt}
+            </p>
+            <div class="mt-auto">
+              <span class="text-xs text-qg-muted/50 italic">Coming soon</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter / notify -->
+  <section class="py-16 px-6 bg-qg-surface border-t border-qg-border">
+    <div class="max-w-md mx-auto text-center">
+      <div class="text-2xl mb-4">🥚</div>
+      <h2 class="font-display font-bold text-2xl text-qg-text mb-3">Get notified</h2>
+      <p class="text-qg-muted text-sm mb-6">
+        New posts, browser updates, and the occasional Quokka news. No spam. One email per major update.
+      </p>
+      <form
+        class="flex gap-3"
+        onsubmit="event.preventDefault(); document.getElementById('blog-notify-success').classList.remove('hidden'); this.classList.add('hidden');"
+      >
+        <input
+          type="email"
+          placeholder="your@email.com"
+          required
+          class="flex-1 px-4 py-3 rounded-lg border border-qg-border bg-qg-bg text-qg-text placeholder-qg-muted text-sm focus:outline-none focus:border-qg-accent transition-colors"
+        />
+        <button
+          type="submit"
+          class="px-5 py-3 rounded-lg bg-qg-accent hover:bg-qg-accent-lt text-white text-sm font-medium transition-colors whitespace-nowrap"
+        >
+          Subscribe
+        </button>
+      </form>
+      <div id="blog-notify-success" class="hidden text-qg-accent-lt text-sm mt-4 p-4 rounded-lg border border-qg-accent/40 bg-qg-accent/10">
+        🐾 You're on the list. The Quokkas will deliver.
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const protonProducts = [
+  {
+    name: 'Proton Mail',
+    icon: '✉️',
+    desc: 'End-to-end encrypted email. Quoton integrates Proton Mail natively — your inbox is accessible directly from the browser sidebar without leaving the Proton security model.',
+    link: 'https://proton.me/mail',
+    linkLabel: 'Proton Mail',
+  },
+  {
+    name: 'Proton VPN',
+    icon: '🔒',
+    desc: 'No-log VPN operated from Switzerland. Quoton can activate Proton VPN at the browser level — traffic from Quogol routes through Proton\'s network without requiring a separate app.',
+    link: 'https://protonvpn.com',
+    linkLabel: 'ProtonVPN',
+  },
+  {
+    name: 'Proton Drive',
+    icon: '💾',
+    desc: 'Encrypted cloud storage. Save files from the browser directly to Proton Drive without exporting to an unsecured location first.',
+    link: 'https://proton.me/drive',
+    linkLabel: 'Proton Drive',
+  },
+  {
+    name: 'Proton Calendar',
+    icon: '📅',
+    desc: 'End-to-end encrypted calendar. Quoton can surface calendar events in the browser UI without your schedule going through Google or Apple.',
+    link: 'https://proton.me/calendar',
+    linkLabel: 'Proton Calendar',
+  },
+];
+
+const cloudflareProducts = [
+  {
+    name: 'Cloudflare WARP',
+    icon: '⚡',
+    desc: 'Cloudflare\'s consumer privacy network. Quoton integrates WARP at the browser level — your DNS queries and traffic route through Cloudflare\'s zero-log infrastructure.',
+    link: 'https://1.1.1.1',
+    linkLabel: 'Cloudflare WARP',
+  },
+  {
+    name: '1.1.1.1 DNS',
+    icon: '🌐',
+    desc: 'Cloudflare\'s privacy-respecting DNS resolver. Quolladium uses 1.1.1.1 as its default DNS resolver, replacing your ISP\'s resolver which may log queries.',
+    link: 'https://1.1.1.1',
+    linkLabel: '1.1.1.1',
+  },
+];
+
+const whyThese = [
+  { label: 'Zero logs', value: 'Both Proton and Cloudflare have independently audited no-log policies.' },
+  { label: 'Swiss law (Proton)', value: 'Proton is governed by Swiss privacy law, which is stricter than EU GDPR.' },
+  { label: 'Transparency', value: 'Both providers publish transparency reports and have resisted government data requests.' },
+  { label: 'Open source', value: 'Proton\'s clients are open source. Cloudflare publishes detailed technical documentation.' },
+  { label: 'Aligned incentives', value: 'Neither makes money by selling your data. Their business model is subscriptions and enterprise contracts.' },
+];
+---
+
+<BaseLayout
+  title="Quoton — Proton + Cloudflare Integration"
+  description="Quoton is Quogol's native integration layer for Proton services and Cloudflare WARP. Privacy-first providers, natively in your browser."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden pt-28 pb-20 px-6">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-0 right-1/4 w-[500px] h-[300px] rounded-full bg-qg-accent opacity-10 blur-3xl"></div>
+    </div>
+    <div class="max-w-5xl mx-auto relative z-10">
+      <div class="text-xs font-medium text-qg-accent uppercase tracking-widest mb-4">Integrations</div>
+      <h1 class="font-display font-black text-5xl md:text-7xl text-qg-text leading-tight mb-6 max-w-3xl">
+        Quoton.<br/>
+        <span class="text-qg-accent-lt">Privacy stack, native.</span>
+      </h1>
+      <p class="text-lg text-qg-muted max-w-xl leading-relaxed mb-10">
+        Proton and Cloudflare are the two best privacy-first infrastructure providers on the internet. Quoton is Quogol's integration layer that makes both feel native — not bolted on.
+      </p>
+
+      <!-- Partner logos -->
+      <div class="flex items-center gap-6 flex-wrap">
+        <div class="flex items-center gap-2 px-4 py-2 rounded-lg border border-qg-border bg-qg-surface">
+          <span class="text-purple-400 font-bold text-sm">Proton</span>
+          <span class="text-qg-muted text-xs">× Quogol</span>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2 rounded-lg border border-qg-border bg-qg-surface">
+          <span class="text-orange-400 font-bold text-sm">Cloudflare</span>
+          <span class="text-qg-muted text-xs">× Quogol</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is Quoton -->
+  <section class="py-12 px-6 bg-qg-surface border-y border-qg-border">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-display font-bold text-2xl text-qg-text mb-6">What Quoton does</h2>
+      <p class="text-qg-muted leading-relaxed mb-6">
+        Quoton is not a plugin. It's an integration layer built into Quogol that allows native authentication with Proton and Cloudflare, surfaces their services inside the browser UI, and routes traffic through their infrastructure — without requiring you to install separate apps, configure proxies manually, or context-switch out of the browser.
+      </p>
+      <p class="text-qg-muted leading-relaxed">
+        Sign in to Proton once inside Quogol. Activate WARP with one toggle. Everything else is handled for you.
+      </p>
+    </div>
+  </section>
+
+  <!-- Proton Integration -->
+  <section id="proton" class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-8 h-8 rounded-lg bg-purple-900/40 border border-purple-800/40 flex items-center justify-center">
+          <span class="text-purple-400 text-xs font-bold">P</span>
+        </div>
+        <div>
+          <div class="text-xs font-medium text-qg-muted uppercase tracking-widest">Proton Integration</div>
+          <h2 class="font-display font-bold text-2xl text-qg-text">Proton × Quogol</h2>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        {protonProducts.map(p => (
+          <div class="p-6 rounded-xl border border-qg-border bg-qg-surface group hover:border-purple-800/50 transition-colors">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-2xl">{p.icon}</span>
+              <h3 class="font-display font-bold text-qg-text">{p.name}</h3>
+            </div>
+            <p class="text-qg-muted text-sm leading-relaxed mb-4">{p.desc}</p>
+            <a
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs text-qg-muted hover:text-qg-accent-lt transition-colors"
+            >
+              Learn about {p.linkLabel} →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cloudflare Integration -->
+  <section id="cloudflare" class="py-24 px-6 bg-qg-surface border-y border-qg-border">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-8 h-8 rounded-lg bg-orange-900/40 border border-orange-800/40 flex items-center justify-center">
+          <span class="text-orange-400 text-xs font-bold">CF</span>
+        </div>
+        <div>
+          <div class="text-xs font-medium text-qg-muted uppercase tracking-widest">Cloudflare Integration</div>
+          <h2 class="font-display font-bold text-2xl text-qg-text">Cloudflare × Quogol</h2>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        {cloudflareProducts.map(p => (
+          <div class="p-6 rounded-xl border border-qg-border bg-qg-bg group hover:border-orange-800/50 transition-colors">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-2xl">{p.icon}</span>
+              <h3 class="font-display font-bold text-qg-text">{p.name}</h3>
+            </div>
+            <p class="text-qg-muted text-sm leading-relaxed mb-4">{p.desc}</p>
+            <a
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-xs text-qg-muted hover:text-qg-accent-lt transition-colors"
+            >
+              Learn about {p.linkLabel} →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why these providers -->
+  <section id="why" class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="font-display font-bold text-3xl text-qg-text mb-4 text-center">
+        Why Proton and Cloudflare?
+      </h2>
+      <p class="text-qg-muted text-center mb-12 max-w-lg mx-auto">
+        We don't integrate with providers just because they offer an API. Quogol chose Proton and Cloudflare because their values align with ours.
+      </p>
+
+      <div class="rounded-xl border border-qg-border overflow-hidden">
+        <div class="divide-y divide-qg-border">
+          {whyThese.map((item, i) => (
+            <div class={`flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-8 px-6 py-5 ${i % 2 === 0 ? 'bg-qg-bg' : 'bg-qg-surface'}`}>
+              <div class="sm:w-48 text-sm font-medium text-qg-text flex-shrink-0">{item.label}</div>
+              <div class="text-qg-muted text-sm leading-relaxed">{item.value}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Affiliate disclosure -->
+  <section class="py-12 px-6 bg-qg-surface border-t border-qg-border">
+    <div class="max-w-3xl mx-auto">
+      <div class="p-6 rounded-xl border border-qg-border bg-qg-bg text-sm text-qg-muted">
+        <div class="font-medium text-qg-text mb-2">Affiliate Disclosure</div>
+        <p class="leading-relaxed">
+          Quogol earns an affiliate commission when you sign up for Proton or Cloudflare products through links in the browser. This is how we fund Quogol Free — no ads, no data sales, just honest affiliate revenue from providers we already recommend. The commission does not change your subscription price or the terms of your agreement with those providers.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

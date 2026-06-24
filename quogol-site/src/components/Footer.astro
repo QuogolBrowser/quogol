@@ -1,18 +1,128 @@
 ---
-const year = new Date().getFullYear();
+const supportEmails = [
+  { label: 'Support', email: 'support@quogol.com' },
+  { label: 'Privacy', email: 'privacy@quogol.com' },
+  { label: 'Security', email: 'security@quogol.com' },
+  { label: 'Dev', email: 'dev@quogol.com' },
+  { label: 'Contact', email: 'contact@quogol.com' },
+  { label: 'Press', email: 'press@quogol.com' },
+];
+
+const navColumns = [
+  {
+    heading: 'Browser',
+    links: [
+      { href: '/#features', label: 'Features' },
+      { href: '/quolladium', label: 'Quolladium Engine' },
+      { href: '/themes', label: 'Themes' },
+      { href: '/quoton', label: 'Quoton' },
+      { href: '/download', label: 'Download' },
+    ],
+  },
+  {
+    heading: 'Community',
+    links: [
+      { href: '/community', label: 'Community Hub' },
+      { href: '/community#quocord', label: 'Quocord Discord' },
+      { href: '/community#crawlers', label: 'Crawler Squad' },
+      { href: '/community#quail-eggs', label: 'Quail Eggs' },
+      { href: '/blog', label: 'Blog' },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { href: '/privacy', label: 'Privacy Policy' },
+      { href: '/terms', label: 'Terms of Service' },
+    ],
+  },
+];
 ---
 
-<footer class="border-t border-qg-border mt-auto">
-  <div class="max-w-5xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-qg-muted">
-    <p>&copy; {year} Quogol. All rights reserved.</p>
-    <ul class="flex items-center gap-6">
-      <li><a href="/privacy" class="hover:text-qg-text transition-colors">Privacy</a></li>
-      <li><a href="/terms" class="hover:text-qg-text transition-colors">Terms</a></li>
-      <li>
-        <a href="https://github.com/QuogolBrowser" target="_blank" rel="noopener noreferrer" class="hover:text-qg-text transition-colors">
-          GitHub
+<footer class="border-t border-qg-border bg-qg-surface mt-24">
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <!-- Top row: Logo + tagline + social -->
+    <div class="flex flex-col md:flex-row md:items-start justify-between gap-10 mb-12">
+      <!-- Brand -->
+      <div class="max-w-xs">
+        <a href="/" class="flex items-center gap-2 mb-3" aria-label="Quogol">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="15" r="11" stroke="var(--qg-accent)" stroke-width="2.5" fill="none"/>
+            <circle cx="16" cy="15" r="6" fill="var(--qg-accent)" opacity="0.2"/>
+            <line x1="22" y1="21" x2="27" y2="27" stroke="var(--qg-accent)" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="13" cy="14" r="1.5" fill="var(--qg-accent-lt)"/>
+            <circle cx="19" cy="14" r="1.5" fill="var(--qg-accent-lt)"/>
+            <path d="M13 18 Q16 20.5 19 18" stroke="var(--qg-accent-lt)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          </svg>
+          <span class="font-display font-bold text-lg text-qg-text">Quogol</span>
         </a>
-      </li>
-    </ul>
+        <p class="text-qg-muted text-sm leading-relaxed">
+          Your Privacy First Browser. Built on Quolladium, not Chromium. Everything works. Nothing watches you.
+        </p>
+        <!-- GitHub social link -->
+        <div class="flex items-center gap-3 mt-4">
+          <a
+            href="https://github.com/QuogolBrowser/quogol"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-qg-muted hover:text-qg-text transition-colors"
+            aria-label="Quogol on GitHub"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Nav columns -->
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+        {navColumns.map(col => (
+          <div>
+            <h3 class="font-display font-bold text-xs text-qg-muted uppercase tracking-widest mb-4">
+              {col.heading}
+            </h3>
+            <ul class="space-y-2">
+              {col.links.map(link => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-sm text-qg-muted hover:text-qg-text transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Support emails -->
+    <div class="border-t border-qg-border pt-8 mb-8">
+      <h3 class="font-display font-bold text-xs text-qg-muted uppercase tracking-widest mb-4">Support</h3>
+      <div class="flex flex-wrap gap-x-6 gap-y-2">
+        {supportEmails.map(({ label, email }) => (
+          <a
+            href={`mailto:${email}`}
+            class="text-sm text-qg-muted hover:text-qg-accent-lt transition-colors"
+          >
+            <span class="text-qg-text font-medium">{label}:</span> {email}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-qg-border">
+      <p class="text-qg-muted text-xs">
+        &copy; {new Date().getFullYear()} Quogol Browser. All rights reserved. 🐾
+      </p>
+      <div class="flex items-center gap-4 text-xs text-qg-muted">
+        <a href="/privacy" class="hover:text-qg-text transition-colors">Privacy Policy</a>
+        <a href="/terms" class="hover:text-qg-text transition-colors">Terms of Service</a>
+      </div>
+    </div>
   </div>
 </footer>

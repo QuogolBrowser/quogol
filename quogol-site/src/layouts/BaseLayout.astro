@@ -1,61 +1,88 @@
 ---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
   ogImage?: string;
-  canonicalURL?: string;
 }
 
 const {
-  title,
-  description = 'Quogol — A privacy-first browser built for you.',
+  title = 'Quogol — Your Privacy First Browser',
+  description = 'Quogol is a privacy-first browser built on Quolladium, not Chromium. Everything works. Nothing watches you. ...except the Quokkas. They watch with love.',
   ogImage = '/og-default.png',
-  canonicalURL = Astro.url.href,
 } = Astro.props;
-
-const siteName = 'Quogol';
 ---
 
-<!doctype html>
-<html lang="en" class="dark">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-
-    <!-- SEO -->
-    <title>{title} | {siteName}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalURL} />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={`${title} | ${siteName}`} />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />
-    <meta property="og:site_name" content={siteName} />
-
-    <!-- Twitter/X Card -->
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={`${title} | ${siteName}`} />
+    <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(ogImage, Astro.site).toString()} />
-
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
 
-    <!-- Fonts (Fontshare) -->
+    <!-- Satoshi (display) + General Sans (body) from Fontshare -->
+    <link rel="preconnect" href="https://api.fontshare.com" />
     <link
-      href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=general-sans@400,500,600&display=swap"
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@700,800,900&f[]=general-sans@400,500,600&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Sitemap -->
-    <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
-
   <body class="bg-qg-bg text-qg-text font-body antialiased">
-    <slot />
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
+
+<style is:global>
+  :root {
+    --qg-bg: #0d1117;
+    --qg-surface: #161b22;
+    --qg-surface-2: #1c2128;
+    --qg-text: #e6edf3;
+    --qg-muted: #8b949e;
+    --qg-accent: #01696f;
+    --qg-accent-lt: #019ca3;
+    --qg-border: #30363d;
+  }
+
+  .bg-qg-bg       { background-color: var(--qg-bg); }
+  .bg-qg-surface  { background-color: var(--qg-surface); }
+  .bg-qg-surface-2 { background-color: var(--qg-surface-2); }
+  .bg-qg-accent   { background-color: var(--qg-accent); }
+  .bg-qg-accent-lt { background-color: var(--qg-accent-lt); }
+  .text-qg-text   { color: var(--qg-text); }
+  .text-qg-muted  { color: var(--qg-muted); }
+  .text-qg-accent { color: var(--qg-accent); }
+  .text-qg-accent-lt { color: var(--qg-accent-lt); }
+  .border-qg-border { border-color: var(--qg-border); }
+  .border-qg-accent { border-color: var(--qg-accent); }
+  .font-display   { font-family: 'Satoshi', sans-serif; }
+  .font-body      { font-family: 'General Sans', sans-serif; }
+
+  html { scroll-behavior: smooth; }
+
+  ::selection {
+    background-color: var(--qg-accent);
+    color: #fff;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--qg-bg); }
+  ::-webkit-scrollbar-thumb { background: var(--qg-border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--qg-muted); }
+</style>

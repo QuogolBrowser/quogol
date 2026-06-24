@@ -1,30 +1,192 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import Navbar from '@/components/Navbar.astro';
-import Footer from '@/components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const platforms = [
+  {
+    name: 'Windows',
+    icon: '🪟',
+    versions: ['Windows 10', 'Windows 11'],
+    status: 'coming-soon',
+    arch: 'x64 / ARM64',
+    note: 'Installer (.exe) — no dependencies',
+  },
+  {
+    name: 'macOS',
+    icon: '🍎',
+    versions: ['macOS 12 Monterey+'],
+    status: 'coming-soon',
+    arch: 'Apple Silicon / Intel',
+    note: 'Universal .dmg — native on M-series',
+  },
+  {
+    name: 'Linux',
+    icon: '🐧',
+    versions: ['Ubuntu 22.04+', 'Fedora 38+', 'Arch'],
+    status: 'coming-soon',
+    arch: 'x64 / ARM64',
+    note: '.AppImage, .deb, .rpm + AUR',
+  },
+  {
+    name: 'Android',
+    icon: '🤖',
+    versions: ['Android 10+'],
+    status: 'coming-soon',
+    arch: 'ARM64',
+    note: 'APK sideload + Play Store',
+  },
+  {
+    name: 'GrapheneOS',
+    icon: '🔐',
+    versions: ['All GrapheneOS builds'],
+    status: 'coming-soon',
+    arch: 'ARM64',
+    note: 'Sandboxed profile support — first-class GrapheneOS citizen',
+    highlight: true,
+  },
+];
+
+const proFeatures = [
+  'Cross-device sync — your tabs, bookmarks and workspaces everywhere',
+  'Priority blocklist — updated before the free tier',
+  'Advanced workspaces — project-scoped browsing environments',
+  'Quail Egg bonuses — earn more currency for community contributions',
+  'Priority support — direct access to the Quogol team',
+];
 ---
 
 <BaseLayout
-  title="Download"
-  description="Download Quogol — the privacy-first browser."
+  title="Download Quogol — Privacy First Browser"
+  description="Download Quogol for Windows, macOS, Linux, Android, and GrapheneOS. Coming soon. Sign up to be notified."
 >
-  <Navbar />
+  <!-- Hero -->
+  <section class="pt-24 pb-12 px-6">
+    <div class="max-w-5xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-qg-border bg-qg-surface text-qg-muted text-xs font-medium mb-8">
+        <span class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse inline-block"></span>
+        Currently in development
+      </div>
+      <h1 class="font-display font-black text-5xl md:text-6xl text-qg-text leading-tight mb-6">
+        Download Quogol 🐾
+      </h1>
+      <p class="text-qg-muted text-lg max-w-xl mx-auto leading-relaxed">
+        Quogol is in active development. Platform builds are coming soon — leave your email below and you'll be first to know when we ship.
+      </p>
+    </div>
+  </section>
 
-  <main class="pt-16">
-    <section class="max-w-3xl mx-auto px-6 py-24 text-center">
-      <h1 class="font-display font-bold text-4xl text-qg-text mb-4">Download Quogol</h1>
-      <p class="text-qg-muted mb-12">Quogol is currently in active development. Check back soon for the first release!</p>
+  <!-- Platform Cards -->
+  <section class="py-12 px-6">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="font-display font-bold text-2xl text-qg-text mb-8 text-center">Supported Platforms</h2>
 
-      <div class="grid sm:grid-cols-3 gap-4">
-        {['Windows', 'macOS', 'Linux'].map(os => (
-          <div class="p-6 rounded-xl border border-qg-border bg-qg-surface text-center">
-            <p class="font-semibold text-qg-text mb-1">{os}</p>
-            <p class="text-xs text-qg-muted">Coming soon</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {platforms.map(p => (
+          <div
+            class={`p-6 rounded-xl border bg-qg-surface flex flex-col gap-3 ${p.highlight ? 'border-qg-accent' : 'border-qg-border'}`}
+          >
+            {p.highlight && (
+              <div class="text-xs font-medium text-qg-accent uppercase tracking-widest">First-class support</div>
+            )}
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">{p.icon}</span>
+              <div>
+                <div class="font-display font-bold text-lg text-qg-text">{p.name}</div>
+                <div class="text-qg-muted text-xs">{p.arch}</div>
+              </div>
+            </div>
+            <ul class="text-xs text-qg-muted space-y-1">
+              {p.versions.map(v => <li class="flex items-center gap-2"><span class="text-qg-accent">✓</span> {v}</li>)}
+            </ul>
+            <p class="text-xs text-qg-muted/70 leading-relaxed">{p.note}</p>
+            <div class="mt-auto pt-3">
+              <button
+                disabled
+                class="w-full px-4 py-2.5 rounded-lg bg-qg-surface-2 border border-qg-border text-qg-muted text-sm font-medium cursor-not-allowed opacity-60"
+                aria-label={`${p.name} download coming soon`}
+              >
+                Coming Soon
+              </button>
+            </div>
           </div>
         ))}
       </div>
-    </section>
-  </main>
 
-  <Footer />
+      <!-- Notify form -->
+      <div class="mt-14 max-w-md mx-auto text-center">
+        <h3 class="font-display font-bold text-xl text-qg-text mb-2">Get notified on launch</h3>
+        <p class="text-qg-muted text-sm mb-6">No spam. One email when Quogol ships. That's it.</p>
+        <form
+          class="flex gap-3"
+          onsubmit="event.preventDefault(); document.getElementById('notify-success').classList.remove('hidden'); this.classList.add('hidden');"
+        >
+          <input
+            type="email"
+            placeholder="your@email.com"
+            required
+            class="flex-1 px-4 py-3 rounded-lg border border-qg-border bg-qg-surface text-qg-text placeholder-qg-muted text-sm focus:outline-none focus:border-qg-accent transition-colors"
+          />
+          <button
+            type="submit"
+            class="px-5 py-3 rounded-lg bg-qg-accent hover:bg-qg-accent-lt text-white text-sm font-medium transition-colors whitespace-nowrap"
+          >
+            Notify Me
+          </button>
+        </form>
+        <div id="notify-success" class="hidden text-qg-accent-lt text-sm mt-4 p-4 rounded-lg border border-qg-accent/40 bg-qg-accent/10">
+          🐾 You're on the list. The Quokkas will find you.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quogol Pro upsell -->
+  <section class="py-24 px-6 bg-qg-surface border-y border-qg-border">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="text-xs font-medium text-qg-accent uppercase tracking-widest mb-3">Quogol Pro</div>
+        <h2 class="font-display font-bold text-3xl text-qg-text mb-6 leading-tight">
+          More power.<br/>Same privacy.
+        </h2>
+        <p class="text-qg-muted leading-relaxed mb-8">
+          Quogol Free includes every privacy feature, forever. Quogol Pro layers on cross-device sync, priority blocklist access, and advanced workspaces — for $9.99 every two months.
+        </p>
+        <div class="text-qg-muted text-sm font-medium mb-2">Included in Pro:</div>
+        <ul class="space-y-3 mb-8">
+          {proFeatures.map(f => (
+            <li class="flex items-start gap-3 text-sm text-qg-muted">
+              <span class="w-5 h-5 rounded-full bg-qg-accent/20 flex items-center justify-center flex-shrink-0 text-qg-accent-lt text-xs mt-0.5">✓</span>
+              {f}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="p-8 rounded-xl border border-qg-accent bg-qg-bg text-center">
+        <div class="font-display font-black text-5xl text-qg-text mb-1">$9.99</div>
+        <div class="text-qg-muted text-sm mb-8">every two months</div>
+        <div class="text-qg-muted text-xs mb-8 leading-relaxed">
+          That's less than a coffee a month — for a browser that actually respects you.
+        </div>
+        <button
+          disabled
+          class="w-full px-6 py-3 rounded-lg bg-qg-accent/50 text-white text-sm font-medium cursor-not-allowed opacity-70"
+        >
+          Available at Launch
+        </button>
+        <p class="text-qg-muted text-xs mt-4">Free tier available at the same time, always.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GrapheneOS note -->
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="p-8 rounded-xl border border-qg-accent/40 bg-qg-surface text-center">
+        <div class="text-3xl mb-4">🔐</div>
+        <h3 class="font-display font-bold text-xl text-qg-text mb-3">GrapheneOS First-Class Support</h3>
+        <p class="text-qg-muted text-sm leading-relaxed max-w-lg mx-auto">
+          Quogol is built by people who care about privacy at the hardware level. GrapheneOS users get first-class support — sandboxed profile compatibility, proper permissions handling, and a build process that respects GrapheneOS's security model. No compromises.
+        </p>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

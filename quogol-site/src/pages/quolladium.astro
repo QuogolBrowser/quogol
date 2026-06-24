@@ -1,0 +1,246 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const specs = [
+  { label: 'Language', value: 'Rust' },
+  { label: 'License', value: 'Open Source' },
+  { label: 'Architecture', value: 'Local-first, zero telemetry' },
+  { label: 'Engine', value: 'Custom (not Chromium, not WebKit, not Gecko)' },
+  { label: 'Blocking', value: 'Engine-level — QuogolBlocker built in' },
+  { label: 'Repo', value: 'github.com/QuogolBrowser/quogol' },
+];
+
+const principles = [
+  {
+    title: 'Privacy by Architecture',
+    desc: 'Privacy isn\'t a setting in Quolladium — it\'s a structural constraint. The engine is built so data collection requires explicit, intentional code. Leaking data requires more work than not leaking it.',
+  },
+  {
+    title: 'Rust-First',
+    desc: 'Chromium was written in C++, a language with memory safety problems that have led to thousands of security CVEs. Quolladium is Rust-first. Memory safety is guaranteed by the type system, not by hope.',
+  },
+  {
+    title: 'No Google Dependency',
+    desc: 'Chromium-based browsers receive updates from Google, follow Google\'s deprecation schedule, and implement whatever APIs Google prioritizes. Quolladium is fully independent. We ship what users need, not what Google\'s ad business needs.',
+  },
+  {
+    title: 'Standards Compliant',
+    desc: 'Being independent doesn\'t mean being broken. Quolladium implements web standards — HTML, CSS, JS, WebAssembly — so websites work the way you expect them to.',
+  },
+];
+
+const blockerDetails = [
+  { label: 'Where it runs', value: 'Inside the rendering pipeline — before network requests are dispatched' },
+  { label: 'Blocklist storage', value: 'On-device. No cloud lookup.' },
+  { label: 'Blocklist update', value: 'Periodic, version-only check — your browsing data is never sent' },
+  { label: 'Coverage', value: 'Ads, trackers, fingerprinting scripts, third-party analytics, crypto miners' },
+  { label: 'Configurability', value: 'Allowlist per-site, pause for a session, or full off (not recommended 😤)' },
+  { label: 'Performance', value: 'Blocking at the engine level is faster than extension-based blocking — fewer roundtrips' },
+];
+---
+
+<BaseLayout
+  title="Quolladium — The Quogol Engine"
+  description="Quolladium is Quogol's open source rendering engine, written in Rust. Not Chromium. Not WebKit. Built for privacy from the ground up."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden pt-28 pb-20 px-6">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-qg-accent opacity-10 blur-3xl"></div>
+    </div>
+    <div class="max-w-5xl mx-auto relative z-10">
+      <div class="text-xs font-medium text-qg-accent uppercase tracking-widest mb-4">The Engine</div>
+      <h1 class="font-display font-black text-5xl md:text-7xl text-qg-text leading-tight mb-6 max-w-3xl">
+        Quolladium.<br/>
+        <span class="text-qg-accent-lt">Not Chromium.</span>
+      </h1>
+      <p class="text-lg text-qg-muted max-w-xl leading-relaxed mb-10">
+        A Rust-first, open source rendering engine built from the ground up with privacy as a structural constraint — not a plugin, not a setting, not an afterthought.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="https://github.com/QuogolBrowser/quogol"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-qg-border text-qg-muted hover:text-qg-text hover:border-qg-accent transition-colors text-sm font-medium"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          View on GitHub
+        </a>
+        <a
+          href="/download"
+          class="px-8 py-3 rounded-lg bg-qg-accent hover:bg-qg-accent-lt text-white font-medium transition-colors text-sm"
+        >
+          Download Quogol
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specs table -->
+  <section class="py-12 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="rounded-xl border border-qg-border overflow-hidden">
+        <div class="bg-qg-surface px-6 py-4 border-b border-qg-border">
+          <div class="font-display font-bold text-sm text-qg-muted uppercase tracking-wider">Engine Specs</div>
+        </div>
+        <div class="divide-y divide-qg-border">
+          {specs.map(s => (
+            <div class="flex items-center gap-8 px-6 py-4 bg-qg-bg hover:bg-qg-surface transition-colors">
+              <div class="w-40 text-xs font-medium text-qg-muted uppercase tracking-wide flex-shrink-0">{s.label}</div>
+              <div class="text-qg-text text-sm font-medium">{s.value}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why not Chromium -->
+  <section class="py-24 px-6 bg-qg-surface border-y border-qg-border">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="font-display font-bold text-3xl text-qg-text mb-4 text-center">
+        Why not Chromium?
+      </h2>
+      <p class="text-qg-muted text-center mb-12 max-w-xl mx-auto">
+        Almost every browser that claims to care about privacy — Brave, Edge, Opera, Arc — is still running Google's engine. That's a structural dependency on Google, regardless of the privacy settings on top.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-xl border border-red-900/40 bg-red-950/20">
+          <div class="font-display font-bold text-lg text-red-400 mb-4">Chromium-based browsers</div>
+          <ul class="space-y-3 text-sm text-qg-muted">
+            <li class="flex items-start gap-3"><span class="text-red-400 flex-shrink-0 mt-0.5">✗</span> Update schedule set by Google</li>
+            <li class="flex items-start gap-3"><span class="text-red-400 flex-shrink-0 mt-0.5">✗</span> Privacy APIs can be deprecated by Google (see Manifest V3)</li>
+            <li class="flex items-start gap-3"><span class="text-red-400 flex-shrink-0 mt-0.5">✗</span> Written in C++ — memory safety vulnerabilities</li>
+            <li class="flex items-start gap-3"><span class="text-red-400 flex-shrink-0 mt-0.5">✗</span> Privacy is a layer on top, not a foundation</li>
+            <li class="flex items-start gap-3"><span class="text-red-400 flex-shrink-0 mt-0.5">✗</span> Still participating in the Chromium ecosystem Google controls</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-xl border border-qg-accent/40 bg-qg-accent/5">
+          <div class="font-display font-bold text-lg text-qg-accent-lt mb-4">Quolladium</div>
+          <ul class="space-y-3 text-sm text-qg-muted">
+            <li class="flex items-start gap-3"><span class="text-qg-accent-lt flex-shrink-0 mt-0.5">✓</span> Fully independent — no Google dependency</li>
+            <li class="flex items-start gap-3"><span class="text-qg-accent-lt flex-shrink-0 mt-0.5">✓</span> Ships when users need features, not Google's schedule</li>
+            <li class="flex items-start gap-3"><span class="text-qg-accent-lt flex-shrink-0 mt-0.5">✓</span> Written in Rust — memory safety by the type system</li>
+            <li class="flex items-start gap-3"><span class="text-qg-accent-lt flex-shrink-0 mt-0.5">✓</span> Privacy is structural — not addable after the fact</li>
+            <li class="flex items-start gap-3"><span class="text-qg-accent-lt flex-shrink-0 mt-0.5">✓</span> Open source — auditable by anyone</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Design principles -->
+  <section class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="font-display font-bold text-3xl text-qg-text mb-12 text-center">
+        Design Principles
+      </h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {principles.map(p => (
+          <div class="p-6 rounded-xl border border-qg-border bg-qg-surface">
+            <h3 class="font-display font-bold text-lg text-qg-text mb-3">{p.title}</h3>
+            <p class="text-qg-muted text-sm leading-relaxed">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- QuogolBlocker -->
+  <section id="quogolblocker" class="py-24 px-6 bg-qg-surface border-y border-qg-border">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-xs font-medium text-qg-accent uppercase tracking-widest mb-4">Built Into Quolladium</div>
+      <h2 class="font-display font-bold text-3xl text-qg-text mb-6">
+        QuogolBlocker
+      </h2>
+      <p class="text-qg-muted max-w-xl mb-12 leading-relaxed">
+        Not a browser extension. Not a userscript. QuogolBlocker lives inside Quolladium's rendering pipeline — it evaluates and blocks requests before they're ever dispatched to the network.
+      </p>
+
+      <div class="rounded-xl border border-qg-border overflow-hidden">
+        <div class="bg-qg-bg px-6 py-4 border-b border-qg-border">
+          <div class="font-display font-bold text-sm text-qg-muted uppercase tracking-wider">QuogolBlocker Details</div>
+        </div>
+        <div class="divide-y divide-qg-border">
+          {blockerDetails.map(d => (
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-8 px-6 py-4 bg-qg-surface hover:bg-qg-bg transition-colors">
+              <div class="sm:w-48 text-xs font-medium text-qg-muted uppercase tracking-wide flex-shrink-0">{d.label}</div>
+              <div class="text-qg-text text-sm">{d.value}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quoogol Mode -->
+  <section id="quoogol" class="py-24 px-6">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="text-xs font-medium text-qg-accent uppercase tracking-widest mb-4">Privacy Mode</div>
+        <h2 class="font-display font-bold text-3xl text-qg-text mb-6 leading-tight">
+          Quoogol Mode
+        </h2>
+        <p class="text-qg-muted leading-relaxed mb-6">
+          Google has the best search results. That's just true. Quoogol Mode lets you use them without giving Google a profile of who you are. Your queries are routed through a Quogol-operated privacy proxy that strips identifying headers, rotates IPs, and discards request logs within 24 hours.
+        </p>
+        <p class="text-qg-muted leading-relaxed mb-6">
+          You get the results. Google gets nothing useful.
+        </p>
+        <div class="flex items-center gap-3 p-4 rounded-lg border border-qg-border bg-qg-surface text-sm">
+          <span class="text-2xl">🔍</span>
+          <div>
+            <div class="font-medium text-qg-text">How it works</div>
+            <div class="text-qg-muted text-xs mt-1">Your query → Quogol proxy (strips identity) → Google → Results back to you → Proxy logs deleted in 24h</div>
+          </div>
+        </div>
+      </div>
+      <div class="p-8 rounded-xl border border-qg-border bg-qg-surface">
+        <div class="font-display font-bold text-sm text-qg-muted uppercase tracking-wider mb-6">What Quoogol Mode Strips</div>
+        <ul class="space-y-3 text-sm">
+          {[
+            'Your IP address',
+            'Google account cookies',
+            'Device fingerprint headers',
+            'Referrer chain',
+            'Search personalization tokens',
+            'Location data',
+          ].map(item => (
+            <li class="flex items-center gap-3">
+              <span class="w-2 h-2 rounded-full bg-qg-accent flex-shrink-0"></span>
+              <span class="text-qg-muted">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agent Quossant -->
+  <section id="agent-quossant" class="py-24 px-6 bg-qg-surface border-t border-qg-border">
+    <div class="max-w-5xl mx-auto text-center">
+      <div class="text-4xl mb-4">🥐</div>
+      <div class="text-xs font-medium text-qg-accent uppercase tracking-widest mb-4">Built-in AI</div>
+      <h2 class="font-display font-bold text-3xl text-qg-text mb-6">Agent Quossant</h2>
+      <p class="text-qg-muted max-w-2xl mx-auto leading-relaxed mb-8">
+        A built-in coding agent for frontend web development. Quossant lives inside Quogol — no API keys to configure, no copy-pasting between apps. HTML, CSS, JavaScript — Quossant handles it without leaving the browser. Named after the French croissant, because good frontend code should be flaky in all the right ways.
+      </p>
+      <div class="grid md:grid-cols-3 gap-5 text-left">
+        {[
+          { title: 'No API keys', desc: 'Quossant is built in — it works the moment you open the browser.' },
+          { title: 'Frontend focused', desc: 'HTML, CSS, JavaScript. It knows the web stack deeply, not generically.' },
+          { title: 'Privacy-first AI', desc: 'Your code doesn\'t leave your device unnecessarily. Quossant is designed with the same privacy principles as the rest of Quogol.' },
+        ].map(card => (
+          <div class="p-6 rounded-xl border border-qg-border bg-qg-bg">
+            <div class="font-display font-bold text-qg-text mb-2">{card.title}</div>
+            <p class="text-qg-muted text-sm leading-relaxed">{card.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

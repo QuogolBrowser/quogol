@@ -1,16 +1,176 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import Navbar from '@/components/Navbar.astro';
-import Footer from '@/components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const lastUpdated = 'June 2026';
 ---
 
-<BaseLayout title="Privacy Policy" description="Quogol Privacy Policy">
-  <Navbar />
-  <main class="pt-16">
-    <section class="max-w-3xl mx-auto px-6 py-24">
-      <h1 class="font-display font-bold text-4xl text-qg-text mb-6">Privacy Policy</h1>
-      <p class="text-qg-muted">Privacy policy content coming soon.</p>
-    </section>
-  </main>
-  <Footer />
+<BaseLayout
+  title="Privacy Policy — Quogol"
+  description="Quogol collects no personal data, runs no telemetry, and sells nothing. Read our full privacy policy."
+>
+  <section class="pt-24 pb-12 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="mb-12">
+        <div class="text-xs font-medium text-qg-accent uppercase tracking-widest mb-4">Privacy Policy</div>
+        <h1 class="font-display font-black text-5xl text-qg-text leading-tight mb-4">
+          We don't watch you. 🐾
+        </h1>
+        <p class="text-qg-muted text-lg leading-relaxed mb-2">
+          (Only the Quokkas do. They watch with love.)
+        </p>
+        <p class="text-qg-muted text-sm">Last updated: {lastUpdated}</p>
+      </div>
+
+      <!-- TL;DR box -->
+      <div class="p-6 rounded-xl border border-qg-accent bg-qg-accent/5 mb-12">
+        <div class="font-display font-bold text-qg-text mb-3">TL;DR — The Short Version</div>
+        <ul class="space-y-2 text-sm text-qg-muted">
+          <li class="flex items-start gap-2"><span class="text-qg-accent-lt mt-0.5 flex-shrink-0">✓</span> We collect no personal data. None. Zero. Nada.</li>
+          <li class="flex items-start gap-2"><span class="text-qg-accent-lt mt-0.5 flex-shrink-0">✓</span> Quogol runs no telemetry on your browsing.</li>
+          <li class="flex items-start gap-2"><span class="text-qg-accent-lt mt-0.5 flex-shrink-0">✓</span> We don't sell, share, or trade your data.</li>
+          <li class="flex items-start gap-2"><span class="text-qg-accent-lt mt-0.5 flex-shrink-0">✓</span> The Quolladium engine processes everything locally, on your device.</li>
+          <li class="flex items-start gap-2"><span class="text-qg-accent-lt mt-0.5 flex-shrink-0">✓</span> Third-party integrations (Proton, Cloudflare) have their own policies — linked below.</li>
+        </ul>
+      </div>
+
+      <div class="prose-qg space-y-10 text-qg-muted leading-relaxed">
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">1. Who We Are</h2>
+          <p>
+            Quogol is a privacy-first browser project. Our mission is to give you a browser that works fully without collecting anything about you. When we say privacy-first, we mean it structurally — the Quolladium engine is designed so that collection isn't possible by default, not just disabled.
+          </p>
+          <p class="mt-3">
+            For questions about this policy: <a href="mailto:privacy@quogol.com" class="text-qg-accent-lt hover:underline">privacy@quogol.com</a>
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">2. What We Collect</h2>
+          <p class="font-medium text-qg-text">Nothing about your browsing. Full stop.</p>
+          <p class="mt-3">
+            Quogol does not log URLs you visit, search queries you enter, pages you load, files you download, form data you fill, or any behavioral telemetry. The Quolladium engine renders locally. Your browsing history never leaves your device.
+          </p>
+          <div class="mt-4 p-4 rounded-lg border border-qg-border bg-qg-surface text-sm">
+            <div class="font-medium text-qg-text mb-2">If you choose to create a Quogol account (for Pro features):</div>
+            <ul class="space-y-1 text-qg-muted">
+              <li>— Email address (for login and support)</li>
+              <li>— Hashed password (never stored in plaintext)</li>
+              <li>— Subscription status (for Pro feature gating)</li>
+            </ul>
+            <p class="mt-2 text-qg-muted/70">We do not associate your account with your browsing activity. Ever.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">3. Crash Reports and Diagnostics</h2>
+          <p>
+            Quogol may — only with your explicit opt-in consent — send anonymized crash reports when the browser encounters a fatal error. These reports contain:
+          </p>
+          <ul class="mt-3 space-y-2 pl-4">
+            <li>— The type of error (e.g. rendering crash, OOM)</li>
+            <li>— Your OS version and architecture</li>
+            <li>— Quogol version number</li>
+          </ul>
+          <p class="mt-3">
+            They do NOT contain URLs, page content, form data, or any identifying information. Crash reporting is off by default. You turn it on. You can turn it off at any time in Settings &rarr; Privacy.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">4. Quoogol Mode</h2>
+          <p>
+            Quoogol Mode lets you use Google Search and Google services without feeding your requests directly to Google. When Quoogol Mode is active, your queries are routed through a Quogol-operated privacy proxy that strips identifying headers, rotates IPs, and discards request logs within 24 hours.
+          </p>
+          <p class="mt-3">
+            The proxy is a transport mechanism — it sees your query for the duration of the request and immediately discards it. No query history is stored. No user profiles are built.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">5. QuogolBlocker</h2>
+          <p>
+            QuogolBlocker operates at the Quolladium engine level. Blocking decisions are made locally against a blocklist stored on your device. No request is sent to any Quogol server to determine whether it should be blocked. The blocklist receives periodic updates — during an update, only the version number of your current list is transmitted, not your browsing data.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">6. Third-Party Integrations — Quoton</h2>
+          <p>
+            Quoton enables native integration with Proton services and Cloudflare WARP. When you use these integrations, your data is processed by those providers under their own privacy policies:
+          </p>
+          <ul class="mt-4 space-y-2">
+            <li>
+              <a href="https://proton.me/legal/privacy" target="_blank" rel="noopener noreferrer" class="text-qg-accent-lt hover:underline text-sm">
+                Proton Privacy Policy → proton.me/legal/privacy
+              </a>
+            </li>
+            <li>
+              <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" class="text-qg-accent-lt hover:underline text-sm">
+                Cloudflare Privacy Policy → cloudflare.com/privacypolicy
+              </a>
+            </li>
+          </ul>
+          <p class="mt-3">
+            We chose Proton and Cloudflare as integration partners specifically because their privacy practices align with ours. We earn an affiliate commission when you sign up through Quogol — this is disclosed clearly in the product. It does not affect how your data is handled.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">7. Quogol Pro — Account & Billing</h2>
+          <p>
+            Quogol Pro subscriptions are processed through a third-party payment processor. We do not store your card details. Your payment processor provides us with a subscription status token only — we never see your card number, billing address, or payment history.
+          </p>
+          <p class="mt-3">
+            Cross-device sync for Pro users encrypts your sync data end-to-end before it leaves your device. Quogol cannot read your synced data. Sync data is stored in encrypted form on our servers and is deleted immediately upon account cancellation.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">8. Quogol Website (quogol.com)</h2>
+          <p>
+            This website does not set tracking cookies. We do not use Google Analytics, Meta Pixel, or any behavioral tracking. We may use privacy-respecting aggregate analytics (e.g. page view counts, referrer domains) that cannot be traced back to individual users. No fingerprinting. No cross-site tracking.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">9. Data Retention</h2>
+          <p>
+            Because we collect essentially nothing, there is essentially nothing to retain. Account data (email, subscription status) is retained as long as your account is active. We delete account data within 30 days of account deletion. Anonymized crash reports are retained for up to 90 days and then permanently deleted.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">10. Your Rights</h2>
+          <p>
+            You have the right to access, correct, and delete any personal data we hold about you. You have the right to data portability. You have the right to withdraw consent at any time. Depending on your jurisdiction (GDPR, CCPA, and similar), you may have additional rights. Contact <a href="mailto:privacy@quogol.com" class="text-qg-accent-lt hover:underline">privacy@quogol.com</a> to exercise any of these rights. We will respond within 30 days.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">11. Children's Privacy</h2>
+          <p>
+            Quogol is not directed at children under 13. We do not knowingly collect any information from children. If you believe a child has provided us with personal data, contact <a href="mailto:privacy@quogol.com" class="text-qg-accent-lt hover:underline">privacy@quogol.com</a> immediately.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">12. Changes to This Policy</h2>
+          <p>
+            If we ever change this policy in a material way, we will notify you — in the browser if you are a registered user, and via a prominent notice on this page. The "last updated" date at the top of this page will reflect any changes. We will never change this policy to introduce data collection without explicit, opt-in consent.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display font-bold text-2xl text-qg-text mb-4">13. Contact</h2>
+          <p>Privacy questions, requests, or concerns:</p>
+          <div class="mt-3 space-y-1 text-sm">
+            <div><a href="mailto:privacy@quogol.com" class="text-qg-accent-lt hover:underline">privacy@quogol.com</a> — privacy inquiries</div>
+            <div><a href="mailto:security@quogol.com" class="text-qg-accent-lt hover:underline">security@quogol.com</a> — security disclosures</div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </section>
 </BaseLayout>

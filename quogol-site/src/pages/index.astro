@@ -1,26 +1,354 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import Navbar from '@/components/Navbar.astro';
-import Footer from '@/components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const features = [
+  {
+    icon: '⚙️',
+    title: 'Quolladium Engine',
+    desc: 'Built on Quolladium, not Chromium. A Rust-first rendering engine designed from the ground up with privacy as a core constraint — not a plugin.',
+    href: '/quolladium',
+  },
+  {
+    icon: '🛡️',
+    title: 'QuogolBlocker',
+    desc: 'Engine-level ad and tracker blocking. Not an extension. Not an afterthought. QuogolBlocker is woven into the rendering pipeline itself.',
+    href: '/quolladium#quogolblocker',
+  },
+  {
+    icon: '🔍',
+    title: 'Quoogol Mode',
+    desc: 'Use Google services without feeding Google. Quoogol Mode proxies your requests through a privacy-preserving layer so you get results, not a profile.',
+    href: '/#features',
+  },
+  {
+    icon: '🎨',
+    title: 'Quogolate Themes',
+    desc: 'Vivaldi-level customization. Quogolate dark mode, Gray Mode, Reader Mode — make the browser yours without sacrificing speed or privacy.',
+    href: '/themes',
+  },
+  {
+    icon: '🔐',
+    title: 'Quoton Integration',
+    desc: 'Native Proton Mail, Proton VPN and Cloudflare WARP support. Quoton makes it trivial to route your traffic through the privacy stack you already trust.',
+    href: '/quoton',
+  },
+  {
+    icon: '🥐',
+    title: 'Agent Quossant',
+    desc: 'Your built-in coding companion. Agent Quossant is a frontend web dev AI that lives inside the browser — no API keys, no clipboard gymnastics.',
+    href: '/#features',
+  },
+];
+
+const ecosystem = [
+  { name: 'Quolladium', role: 'Open source rendering engine (Rust)', href: '/quolladium' },
+  { name: 'QuogolBlocker', role: 'Privacy and AI feature kill layer', href: '/quolladium#quogolblocker' },
+  { name: 'Quoogol', role: 'Google services privacy mode', href: '/#features' },
+  { name: 'Quoton', role: 'Proton + Cloudflare integration layer', href: '/quoton' },
+  { name: 'Quokkle-1 🐢', role: 'Search crawler — deep & thorough + Search Chat Bot', href: '/community#crawlers' },
+  { name: 'Quotopus-2 🐙', role: 'Search crawler — fast and wide', href: '/community#crawlers' },
+  { name: 'Quolophant-3 🐘', role: 'Search crawler — indexing and memory', href: '/community#crawlers' },
+  { name: 'Agent Quossant 🥐', role: 'Built-in coding agent — frontend web dev', href: '/#features' },
+  { name: 'Platybara', role: 'Dev-focused AI training bot (HTML/CSS/JS only)', href: '/community' },
+  { name: 'Quail Eggs 🥚', role: 'Community contribution currency', href: '/community#quail-eggs' },
+  { name: 'Quocord', role: 'Official community Discord', href: '/community#quocord' },
+];
+
+const easterEggs = [
+  { trigger: 'quokka <3', what: 'Entire UI showers with Quokkas' },
+  { trigger: 'capybara', what: '10 Quokka + Capybara videos appear' },
+  { trigger: 'r a i n b o w', what: 'Search bar animates a rainbow border' },
+  { trigger: 'Rick Roll detected', what: 'Quokka and Capybara appear and vibe to it' },
+  { trigger: '"google" typed', what: 'Quokka shakes head disapprovingly' },
+  { trigger: '"status quo" typed', what: 'Quokka breaks chains animation' },
+  { trigger: 'Going offline', what: 'Quokka sits there, unbothered and happy' },
+  { trigger: 'Quogolate mode activated', what: 'Quokka appears holding chocolate' },
+];
 ---
 
 <BaseLayout
-  title="Home"
-  description="Quogol — A privacy-first browser. No tracking. No profiling. Built for you."
+  title="Quogol — Your Privacy First Browser"
+  description="Quogol is a privacy-first browser built on Quolladium, not Chromium. Everything works. Nothing watches you. ...except the Quokkas. They watch with love."
 >
-  <Navbar />
+  <!-- ======= HERO ======= -->
+  <section class="relative overflow-hidden pt-28 pb-24 px-6">
+    <!-- Background glow -->
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-qg-accent opacity-10 blur-3xl"></div>
+    </div>
 
-  <main class="pt-16">
-    <!-- Hero -->
-    <section class="min-h-[90vh] flex flex-col items-center justify-center text-center px-6 py-24">
-      <p class="text-qg-accent text-sm font-medium tracking-widest uppercase mb-4">Privacy-First Browser</p>
-      <h1 class="font-display font-bold text-5xl md:text-7xl text-qg-text leading-tight mb-6">
-        Browse freely.<br />Stay private.
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-qg-border bg-qg-surface text-qg-muted text-xs font-medium mb-8">
+        <span class="w-2 h-2 rounded-full bg-qg-accent animate-pulse inline-block"></span>
+        Built on Quolladium &middot; Not Chromium
+      </div>
+
+      <h1 class="font-display font-black text-5xl md:text-7xl text-qg-text leading-tight mb-6">
+        Your Privacy
+        <span class="text-qg-accent-lt"> First</span> Browser.
       </h1>
-      <p class="text-qg-muted text-lg max-w-xl mb-10">
-        Quogol is a fast, clean browser that respects your data — no tracking, no profiling, no compromises.
+
+      <p class="text-lg md:text-xl text-qg-muted max-w-2xl mx-auto mb-4 leading-relaxed">
+        Runs on Quolladium and Quokkas.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4">
+      <p class="text-base text-qg-muted/70 max-w-xl mx-auto mb-12 leading-relaxed italic">
+        Everything works. Nothing watches you. ...except the Quokkas. They watch with love. 🐾
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/download"
+          class="px-8 py-3 rounded-lg bg-qg-accent hover:bg-qg-accent-lt text-white font-medium transition-colors text-sm"
+        >
+          Download Quogol
+        </a>
+        <a
+          href="/quolladium"
+          class="px-8 py-3 rounded-lg border border-qg-border text-qg-muted hover:text-qg-text hover:border-qg-accent transition-colors text-sm"
+        >
+          Explore Quolladium
+        </a>
+      </div>
+
+      <!-- Stat row -->
+      <div class="mt-16 grid grid-cols-3 gap-6 max-w-lg mx-auto">
+        <div class="text-center">
+          <div class="font-display font-bold text-2xl text-qg-accent-lt">0</div>
+          <div class="text-qg-muted text-xs mt-1">Trackers allowed</div>
+        </div>
+        <div class="text-center border-x border-qg-border">
+          <div class="font-display font-bold text-2xl text-qg-accent-lt">Rust</div>
+          <div class="text-qg-muted text-xs mt-1">Engine core</div>
+        </div>
+        <div class="text-center">
+          <div class="font-display font-bold text-2xl text-qg-accent-lt">Free</div>
+          <div class="text-qg-muted text-xs mt-1">Forever, always</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= FEATURES ======= -->
+  <section id="features" class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="font-display font-bold text-3xl text-qg-text mb-4 text-center">
+        Built different. 🐾
+      </h2>
+      <p class="text-qg-muted text-center mb-12 max-w-xl mx-auto">
+        Six pillars that make Quogol the privacy browser that doesn't compromise.
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {features.map(f => (
+          <a
+            href={f.href}
+            class="group p-6 rounded-xl border border-qg-border bg-qg-surface hover:border-qg-accent transition-colors block"
+          >
+            <div class="text-3xl mb-4">{f.icon}</div>
+            <h3 class="font-display font-bold text-lg text-qg-text mb-2 group-hover:text-qg-accent-lt transition-colors">
+              {f.title}
+            </h3>
+            <p class="text-qg-muted text-sm leading-relaxed">{f.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= QUOLLADIUM CALLOUT ======= -->
+  <section class="py-24 px-6 bg-qg-surface border-y border-qg-border">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="text-xs font-medium text-qg-accent uppercase tracking-widest mb-3">The Engine</div>
+        <h2 class="font-display font-bold text-4xl text-qg-text mb-6 leading-tight">
+          Quolladium.<br/>Built in Rust.<br/>Built for privacy.
+        </h2>
+        <p class="text-qg-muted leading-relaxed mb-8">
+          Every browser that claims to care about privacy is still running Chromium under the hood — still playing by Google's rules, still on Google's update schedule. Quolladium breaks free. A rendering engine written in Rust, designed from the ground up to treat your data as yours.
+        </p>
+        <a
+          href="/quolladium"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-qg-accent hover:bg-qg-accent-lt text-white font-medium transition-colors text-sm"
+        >
+          Explore Quolladium
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M1 8a.5.5 0 01.5-.5h11.793l-3.147-3.146a.5.5 0 01.708-.708l4 4a.5.5 0 010 .708l-4 4a.5.5 0 01-.708-.708L13.293 8.5H1.5A.5.5 0 011 8z"/>
+          </svg>
+        </a>
+      </div>
+      <div class="relative">
+        <div class="p-8 rounded-xl border border-qg-border bg-qg-bg font-mono text-sm leading-relaxed text-qg-muted">
+          <div class="text-qg-accent-lt mb-1">// Quolladium engine core</div>
+          <div><span class="text-qg-accent">fn</span> <span class="text-qg-text">render_page</span>(url: &amp;Url) {'{'}</div>
+          <div class="pl-4"><span class="text-qg-accent">let</span> blocked = quogol_blocker</div>
+          <div class="pl-8">.evaluate(url);</div>
+          <div class="pl-4"><span class="text-qg-accent">if</span> blocked {'{'}</div>
+          <div class="pl-8 text-qg-muted/60">// tracker silenced, quietly</div>
+          <div class="pl-8"><span class="text-qg-accent">return</span> Response::blocked();</div>
+          <div class="pl-4">{'}'}</div>
+          <div class="pl-4">render_rust_layout(url)</div>
+          <div>{'}'}</div>
+          <div class="mt-4 text-qg-muted/50 text-xs">🐾 No telemetry. No callbacks home.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= ECOSYSTEM TABLE ======= -->
+  <section id="ecosystem" class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="font-display font-bold text-3xl text-qg-text mb-4 text-center">
+        The Quogol Ecosystem
+      </h2>
+      <p class="text-qg-muted text-center mb-12 max-w-lg mx-auto">
+        Every piece of the puzzle — from the rendering engine to the crawler squad.
+      </p>
+
+      <div class="rounded-xl border border-qg-border overflow-hidden">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-qg-border bg-qg-surface">
+              <th class="text-left px-6 py-4 text-qg-muted font-medium text-xs uppercase tracking-wider">Component</th>
+              <th class="text-left px-6 py-4 text-qg-muted font-medium text-xs uppercase tracking-wider">Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ecosystem.map((item, i) => (
+              <tr class={`border-b border-qg-border last:border-0 hover:bg-qg-surface transition-colors ${i % 2 === 0 ? 'bg-qg-bg' : 'bg-qg-surface/40'}`}>
+                <td class="px-6 py-4">
+                  <a href={item.href} class="font-medium text-qg-text hover:text-qg-accent-lt transition-colors">
+                    {item.name}
+                  </a>
+                </td>
+                <td class="px-6 py-4 text-qg-muted">{item.role}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= EASTER EGGS ======= -->
+  <section id="easter-eggs" class="py-24 px-6 bg-qg-surface border-y border-qg-border">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="text-3xl mb-3">🐾</div>
+        <h2 class="font-display font-bold text-3xl text-qg-text mb-4">
+          Because browsers should be delightful.
+        </h2>
+        <p class="text-qg-muted max-w-lg mx-auto">
+          Quogol is peppered with Easter eggs. The Quokkas are always watching — with love.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        {easterEggs.map(egg => (
+          <div class="p-5 rounded-xl border border-qg-border bg-qg-bg flex items-start gap-4">
+            <div class="mt-0.5 w-8 h-8 rounded-full bg-qg-accent/20 flex items-center justify-center text-qg-accent-lt flex-shrink-0">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 13A6 6 0 118 2a6 6 0 010 12z"/>
+                <path d="M7.5 7.5a.5.5 0 011 0v3a.5.5 0 01-1 0v-3zm.5-2a.75.75 0 100-1.5.75.75 0 000 1.5z"/>
+              </svg>
+            </div>
+            <div>
+              <code class="text-qg-accent-lt text-sm font-mono">{egg.trigger}</code>
+              <p class="text-qg-muted text-sm mt-1">{egg.what}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= BUSINESS MODEL / PRO CALLOUT ======= -->
+  <section id="pricing" class="py-24 px-6">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="font-display font-bold text-3xl text-qg-text mb-4 text-center">
+        Free forever. Pro for power users.
+      </h2>
+      <p class="text-qg-muted text-center mb-12 max-w-xl mx-auto">
+        All privacy features are free. Always. Quogol Pro is for those who want more.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Free -->
+        <div class="p-8 rounded-xl border border-qg-border bg-qg-surface">
+          <div class="font-display font-bold text-xl text-qg-text mb-1">Quogol Free</div>
+          <div class="text-3xl font-display font-black text-qg-text mb-6">$0 <span class="text-qg-muted text-base font-normal">/ forever</span></div>
+          <ul class="space-y-3 text-sm text-qg-muted mb-8">
+            {[
+              'All privacy features',
+              'QuogolBlocker (engine-level)',
+              'Quoogol Mode',
+              'Quolladium rendering engine',
+              'Quoton integration (Proton + Cloudflare)',
+              'All themes: Quogolate, Gray Mode, Reader Mode',
+              'Agent Quossant coding agent',
+              'Quail Egg community contributions',
+            ].map(item => (
+              <li class="flex items-center gap-3">
+                <span class="w-5 h-5 rounded-full bg-qg-accent/20 flex items-center justify-center flex-shrink-0 text-qg-accent-lt text-xs">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <a
+            href="/download"
+            class="block w-full text-center px-6 py-3 rounded-lg border border-qg-border text-qg-muted hover:text-qg-text hover:border-qg-accent transition-colors text-sm font-medium"
+          >
+            Download Free
+          </a>
+        </div>
+
+        <!-- Pro -->
+        <div class="p-8 rounded-xl border border-qg-accent bg-qg-surface relative overflow-hidden">
+          <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-qg-accent text-white text-xs font-medium">Pro</div>
+          <div class="font-display font-bold text-xl text-qg-text mb-1">Quogol Pro</div>
+          <div class="text-3xl font-display font-black text-qg-text mb-6">$9.99 <span class="text-qg-muted text-base font-normal">/ 2 months</span></div>
+          <ul class="space-y-3 text-sm text-qg-muted mb-8">
+            {[
+              'Everything in Free',
+              'Cross-device sync',
+              'Priority blocklist updates',
+              'Advanced workspaces',
+              'Quail Egg bonuses',
+              'Priority support',
+            ].map(item => (
+              <li class="flex items-center gap-3">
+                <span class="w-5 h-5 rounded-full bg-qg-accent/30 flex items-center justify-center flex-shrink-0 text-qg-accent-lt text-xs">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <a
+            href="/download"
+            class="block w-full text-center px-6 py-3 rounded-lg bg-qg-accent hover:bg-qg-accent-lt text-white transition-colors text-sm font-medium"
+          >
+            Get Quogol Pro
+          </a>
+        </div>
+      </div>
+
+      <!-- Affiliate note -->
+      <p class="text-center text-qg-muted text-xs mt-8">
+        We also earn affiliate revenue when you sign up for <span class="text-qg-text">Proton Mail</span>, <span class="text-qg-text">Proton VPN</span>, or <span class="text-qg-text">Cloudflare WARP</span> through Quogol. This is how we keep Free free. No ads. No tracking. No compromise.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======= FINAL CTA ======= -->
+  <section class="py-24 px-6">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="text-4xl mb-6">🐾</div>
+      <h2 class="font-display font-bold text-4xl text-qg-text mb-6 leading-tight">
+        Ready to browse without being watched?
+      </h2>
+      <p class="text-qg-muted mb-10 leading-relaxed">
+        Join the Quogol community. Get the browser. Keep your data.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
           href="/download"
           class="px-8 py-3 rounded-lg bg-qg-accent hover:bg-qg-accent-lt text-white font-medium transition-colors"
@@ -28,33 +356,12 @@ import Footer from '@/components/Footer.astro';
           Download Quogol
         </a>
         <a
-          href="https://github.com/QuogolBrowser"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/community"
           class="px-8 py-3 rounded-lg border border-qg-border text-qg-muted hover:text-qg-text hover:border-qg-accent transition-colors"
         >
-          View on GitHub
+          Join the Community
         </a>
       </div>
-    </section>
-
-    <!-- Features placeholder -->
-    <section id="features" class="max-w-5xl mx-auto px-6 py-24">
-      <h2 class="font-display font-bold text-3xl text-qg-text mb-12 text-center">Built different</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        {[
-          { title: 'Privacy by Default', desc: 'No telemetry. No data collection. No phone-home behavior.' },
-          { title: 'Blazing Fast',       desc: 'Lightweight and responsive even on modest hardware.' },
-          { title: 'Anti-Tracking',      desc: 'Built-in protection against fingerprinting and ad trackers.' },
-        ].map(f => (
-          <div class="p-6 rounded-xl border border-qg-border bg-qg-surface">
-            <h3 class="font-display font-semibold text-qg-text mb-2">{f.title}</h3>
-            <p class="text-qg-muted text-sm leading-relaxed">{f.desc}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  </main>
-
-  <Footer />
+    </div>
+  </section>
 </BaseLayout>
