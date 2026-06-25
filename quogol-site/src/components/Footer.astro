@@ -1,11 +1,22 @@
 ---
-const supportEmails = [
+const supportOpsEmails = [
   { label: 'Support', email: 'support@quogol.com' },
   { label: 'Privacy', email: 'privacy@quogol.com' },
   { label: 'Security', email: 'security@quogol.com' },
-  { label: 'Dev', email: 'dev@quogol.com' },
+  { label: 'Quolladium', email: 'Quolladium.support@quogol.com' },
+  { label: 'Billing', email: 'billing.help@quogol.com' },
+];
+
+const brandingEmails = [
+  { label: 'Partner', email: 'partner@quogol.com' },
   { label: 'Contact', email: 'contact@quogol.com' },
   { label: 'Press', email: 'press@quogol.com' },
+  { label: 'Community', email: 'quommunity@quogol.com' },
+];
+
+const projectEmails = [
+  { label: 'Quokkle AI', email: 'quokkle@quogol.com' },
+  { label: 'Dev / Open Source', email: 'dev@quogol.com' },
 ];
 
 const navColumns = [
@@ -59,6 +70,9 @@ const navColumns = [
         <p class="text-qg-muted text-sm leading-relaxed">
           Your Privacy First Browser. Built on Quolladium, not Chromium. Everything works. Nothing watches you.
         </p>
+        <p class="text-qg-muted text-xs mt-2 leading-relaxed italic">
+          Concept Browser App Coming Soon. This website here is just a concept pitch.
+        </p>
         <!-- GitHub social link -->
         <div class="flex items-center gap-3 mt-4">
           <a
@@ -99,18 +113,37 @@ const navColumns = [
       </div>
     </div>
 
-    <!-- Support emails -->
-    <div class="border-t border-qg-border pt-8 mb-8">
-      <h3 class="font-display font-bold text-xs text-qg-muted uppercase tracking-widest mb-4">Support</h3>
-      <div class="flex flex-wrap gap-x-6 gap-y-2">
-        {supportEmails.map(({ label, email }) => (
-          <a
-            href={`mailto:${email}`}
-            class="text-sm text-qg-muted hover:text-qg-accent-lt transition-colors"
-          >
-            <span class="text-qg-text font-medium">{label}:</span> {email}
-          </a>
-        ))}
+    <!-- Support emails — 3 grouped sections -->
+    <div class="border-t border-qg-border pt-8 mb-8 space-y-6">
+      <div>
+        <h3 class="font-display font-bold text-xs text-qg-muted uppercase tracking-widest mb-3">Support Ops</h3>
+        <div class="flex flex-wrap gap-x-6 gap-y-2">
+          {supportOpsEmails.map(({ label, email }) => (
+            <a href={`mailto:${email}`} class="text-sm text-qg-muted hover:text-qg-accent-lt transition-colors">
+              <span class="text-qg-text font-medium">{label}:</span> {email}
+            </a>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h3 class="font-display font-bold text-xs text-qg-muted uppercase tracking-widest mb-3">Branding & Community</h3>
+        <div class="flex flex-wrap gap-x-6 gap-y-2">
+          {brandingEmails.map(({ label, email }) => (
+            <a href={`mailto:${email}`} class="text-sm text-qg-muted hover:text-qg-accent-lt transition-colors">
+              <span class="text-qg-text font-medium">{label}:</span> {email}
+            </a>
+          ))}
+        </div>
+      </div>
+      <div>
+        <h3 class="font-display font-bold text-xs text-qg-muted uppercase tracking-widest mb-3">Project Specific</h3>
+        <div class="flex flex-wrap gap-x-6 gap-y-2">
+          {projectEmails.map(({ label, email }) => (
+            <a href={`mailto:${email}`} class="text-sm text-qg-muted hover:text-qg-accent-lt transition-colors">
+              <span class="text-qg-text font-medium">{label}:</span> {email}
+            </a>
+          ))}
+        </div>
       </div>
     </div>
 

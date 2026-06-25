@@ -229,11 +229,14 @@ const blockerDetails = [
       <p class="text-qg-muted max-w-2xl mx-auto leading-relaxed mb-8">
         A built-in coding agent for frontend web development. Quossant lives inside Quogol — no API keys to configure, no copy-pasting between apps. HTML, CSS, JavaScript — Quossant handles it without leaving the browser. Named after the French croissant, because good frontend code should be flaky in all the right ways.
       </p>
-      <div class="grid md:grid-cols-3 gap-5 text-left">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 text-left">
         {[
-          { title: 'No API keys', desc: 'Quossant is built in — it works the moment you open the browser.' },
-          { title: 'Frontend focused', desc: 'HTML, CSS, JavaScript. It knows the web stack deeply, not generically.' },
-          { title: 'Privacy-first AI', desc: 'Your code doesn\'t leave your device unnecessarily. Quossant is designed with the same privacy principles as the rest of Quogol.' },
+          { title: 'No API keys', desc: 'Quossant is built in — it works the moment you open the browser. No configuration, no setup.' },
+          { title: 'Frontend focused', desc: 'HTML, CSS, JavaScript, React, Vite, Astro, static site generators. The web stack cold — not generically.' },
+          { title: 'GitHub integration', desc: 'Quossant can add, fix, update, and commit releases to your GitHub repos directly from the browser sidebar. No IDE switching required.' },
+          { title: 'Privacy-first AI', desc: 'Your code doesn\'t leave your device unnecessarily. Same privacy principles as the rest of Quogol.' },
+          { title: 'Sidebar-based', desc: 'Lives inside Quogol. Inspect a site and remix it without ever leaving the browser.' },
+          { title: 'Powered by Platybara', desc: 'Quossant is trained exclusively on frontend web stack data via Platybara — narrow scope, deep knowledge.' },
         ].map(card => (
           <div class="p-6 rounded-xl border border-qg-border bg-qg-bg">
             <div class="font-display font-bold text-qg-text mb-2">{card.title}</div>
